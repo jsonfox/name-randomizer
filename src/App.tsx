@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+import Edit from "./pages/Edit";
+import Home from "./pages/Home";
+import { AppBar, Typography, Stack, IconButton, Box } from "@mui/material";
+import { Edit as EditIcon, Home as HomeIcon } from "@mui/icons-material";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [editMode, setEditMode] = useState(false);
+
+  useEffect(() => {
+    setEditMode(document.location.pathname === "/edit");
+  }, [document.location.pathname]);
+
+  const toggleEditMode = () => {
+    setEditMode(!editMode);
+    document.location.pathname = editMode ? "/" : "/edit";
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <AppBar>
+        <Stack
+          direction="row"
+          sx={{
+            padding: "1rem",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h4">Name Randomizer</Typography>
+          <IconButton onClick={toggleEditMode}>
+            {editMode ? (
+              <HomeIcon fontSize="large" />
+            ) : (
+              <EditIcon fontSize="large" />
+            )}
+          </IconButton>
+        </Stack>
+      </AppBar>
+      <Box>{editMode ? <Edit /> : <Home />}</Box>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
