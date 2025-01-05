@@ -9,7 +9,7 @@ function App() {
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    setEditMode(window.location.pathname === "edit");
+    setEditMode(window.location.hash === "edit");
   }, [window.location]);
 
   const toggleEditMode = () => {
