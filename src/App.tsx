@@ -9,14 +9,13 @@ function App() {
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    setEditMode(document.location.pathname === "/name-randomizer/edit");
-  }, [document.location.pathname]);
+    setEditMode(window.location.pathname === "edit");
+  }, [window.location]);
 
   const toggleEditMode = () => {
+    // Add/remove #edit from the URL
     setEditMode(!editMode);
-    document.location.pathname = editMode
-      ? "/name-randomizer/"
-      : "/name-randomizer/edit";
+    window.location.hash = editMode ? "" : "edit";
   };
 
   return (

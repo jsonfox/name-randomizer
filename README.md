@@ -12,5 +12,4 @@ Simple app to select a random name from a list of names. You can choose to limit
 ## Future Additions
 - Support for handling identical names
 - Warning before navigating away from edit page without saving
-- Fix flicker on page change
 - Nicer looking UI
