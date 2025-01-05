@@ -9,17 +9,19 @@ function App() {
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    setEditMode(document.location.pathname === "/edit");
+    setEditMode(document.location.pathname === "/name-randomizer/edit");
   }, [document.location.pathname]);
 
   const toggleEditMode = () => {
     setEditMode(!editMode);
-    document.location.pathname = editMode ? "/" : "/edit";
+    document.location.pathname = editMode
+      ? "/name-randomizer/"
+      : "/name-randomizer/edit";
   };
 
   return (
     <>
-      <AppBar sx={{bgcolor: '#2875ce'}}>
+      <AppBar sx={{ bgcolor: "#2875ce" }}>
         <Stack
           direction="row"
           sx={{
