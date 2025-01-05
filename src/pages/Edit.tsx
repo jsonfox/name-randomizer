@@ -42,7 +42,7 @@ export default function Edit() {
 
   const handleRemoveName = (index: number) => {
     setNames(names.filter((_, i) => i !== index));
-  }
+  };
 
   return (
     <Stack spacing={4} sx={{ alignItems: "center" }}>
@@ -55,6 +55,11 @@ export default function Edit() {
             disabled={names.length === 0}
           >
             Clear All
+          </Button>
+        </FormControl>
+        <FormControl>
+          <Button variant="contained" onClick={() => window.location.reload()}>
+            Cancel Changes
           </Button>
         </FormControl>
         <FormControl>
@@ -106,7 +111,10 @@ export default function Edit() {
       <Stack spacing={1.5} sx={{ width: "35ch" }}>
         {names.map((name, index) => (
           <Stack key={index} direction="row" spacing={1}>
-            <DeleteIcon onClick={() => handleRemoveName(index)} sx={{ color: "#eb7c7c", cursor: "pointer" }} />
+            <DeleteIcon
+              onClick={() => handleRemoveName(index)}
+              sx={{ color: "#eb7c7c", cursor: "pointer" }}
+            />
             <Typography>{name}</Typography>
           </Stack>
         ))}

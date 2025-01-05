@@ -19,11 +19,12 @@ function App() {
 
   return (
     <>
-      <AppBar>
+      <AppBar sx={{bgcolor: '#2875ce'}}>
         <Stack
           direction="row"
           sx={{
-            padding: "1rem",
+            py: "1rem",
+            px: "10rem",
             justifyContent: "space-between",
             alignItems: "center",
           }}
